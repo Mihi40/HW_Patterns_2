@@ -14,10 +14,10 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Grant execute permission for gradlew
-        run: Run Jar file in test mode
-      - name: Start SUT
+      - name: Run Jar file in test mode
         run: java -jar .artifacts/app-ibank.jar -P:profile=test &
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew test --info -Dselenide.headless=true
 
